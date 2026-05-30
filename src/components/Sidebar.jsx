@@ -143,16 +143,17 @@ export default function Sidebar() {
 
       {/* Mobile overlay */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
+        <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden" onClick={() => setMobileOpen(false)} />
       )}
 
       {/* Sidebar - desktop + mobile overlay */}
       <aside className={`
         ${mobileOpen ? 'translate-x-0' : '-translate-x-full'}
-        lg:translate-x-0 lg:static fixed inset-y-0 left-0 z-50
+        lg:translate-x-0
+        fixed lg:static inset-y-0 left-0 z-50
         ${collapsed ? 'w-[72px]' : 'w-60'}
         min-h-screen bg-gradient-to-b from-[#0F0B1A] via-[#16102B] to-[#0F0B1A] border-r border-indigo-900/20
-        flex flex-col shrink-0 relative transition-all duration-300
+        flex flex-col shrink-0 transition-all duration-300
       `}>
         {sidebarContent}
       </aside>
