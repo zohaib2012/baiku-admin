@@ -22,6 +22,7 @@ export default function Sidebar() {
   const location = useLocation();
 
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
+  useEffect(() => { document.body.style.overflow = mobileOpen ? 'hidden' : ''; return () => { document.body.style.overflow = ''; }; }, [mobileOpen]);
 
   const handleLogout = async () => {
     setLoggingOut(true);
@@ -77,8 +78,8 @@ export default function Sidebar() {
                 </>
               )}
               <span className={`relative z-10 transition-all duration-200 ${active ? 'text-indigo-300' : 'text-indigo-400/60 group-hover:text-indigo-300'}`}>{icon}</span>
-              {!collapsed && <span className="relative z-10">{label}</span>}
-              {active && !collapsed && <span className="ml-auto relative z-10"><span className="block w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-sm shadow-indigo-400/50" /></span>}
+              {!collapsed && <span className="relative z-10 truncate">{label}</span>}
+              {active && !collapsed && <span className="ml-auto relative z-10 shrink-0"><span className="block w-1.5 h-1.5 bg-indigo-400 rounded-full shadow-sm shadow-indigo-400/50" /></span>}
               {active && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-gradient-to-b from-indigo-400 to-violet-500 rounded-full shadow-sm shadow-indigo-400/50" />}
             </NavLink>
           );
@@ -98,7 +99,7 @@ export default function Sidebar() {
                   <>
                     {active && <span className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-indigo-500/10 to-transparent rounded-xl" />}
                     <span className={`relative z-10 transition-all duration-200 ${active ? 'text-indigo-300' : 'text-indigo-400/60 group-hover:text-indigo-300'}`}>{icon}</span>
-                    <span className="relative z-10">{label}</span>
+                    <span className="relative z-10 truncate">{label}</span>
                   </>
                 )}
               </NavLink>
@@ -115,9 +116,9 @@ export default function Sidebar() {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-[18px] h-[18px] transition-all duration-200 group-hover:translate-x-0.5 relative z-10 ${loggingOut ? 'animate-spin' : ''}`}>
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" />
           </svg>
-          {!collapsed && <span className="relative z-10">{loggingOut ? 'Logging out...' : 'Logout'}</span>}
+          {!collapsed && <span className="relative z-10 truncate">{loggingOut ? 'Logging out...' : 'Logout'}</span>}
         </button>
-        <div className="hidden lg:flex items-center gap-2 px-1 mt-3">
+        <div className="hidden md:flex items-center gap-2 px-1 mt-3">
           <button onClick={() => setCollapsed(!collapsed)}
             className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg text-[10px] font-medium text-indigo-400/40 hover:text-indigo-300/60 hover:bg-white/[0.04] transition-all duration-200">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-3.5 h-3.5 transition-transform duration-300 ${collapsed ? 'rotate-180' : ''}`}>

@@ -70,7 +70,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
         {loading ? (
           <>
             {[1,2,3,4,5,6,7].map(i => (
@@ -127,8 +127,8 @@ export default function Dashboard() {
                 recentRides.map((ride, i) => (
                   <tr key={ride.id} className="hover:bg-indigo-50/30 transition-colors slide-in-right" style={{ animationDelay: `${i * 50}ms` }}>
                     <td className="px-4 sm:px-6 py-3.5 font-medium text-gray-800 whitespace-nowrap">{ride.passengerName || '—'}</td>
-                    <td className="px-4 sm:px-6 py-3.5 text-gray-500 max-w-[120px] sm:max-w-[160px] truncate">{ride.pickupAddress}</td>
-                    <td className="px-4 sm:px-6 py-3.5 text-gray-500 max-w-[120px] sm:max-w-[160px] truncate">{ride.dropAddress}</td>
+                    <td className="px-4 sm:px-6 py-3.5 text-gray-500 max-w-[80px] sm:max-w-[160px] truncate">{ride.pickupAddress}</td>
+                    <td className="px-4 sm:px-6 py-3.5 text-gray-500 max-w-[80px] sm:max-w-[160px] truncate">{ride.dropAddress}</td>
                     <td className="px-4 sm:px-6 py-3.5 font-medium whitespace-nowrap">
                       <span className="bg-indigo-50 px-2.5 py-1 rounded-lg text-sm text-indigo-700 font-semibold">Rs. {ride.finalPrice || ride.passengerPrice}</span>
                     </td>

@@ -38,7 +38,7 @@ export default function AllDrivers() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3">
-        <div className="relative w-full sm:max-w-xs">
+        <div className="relative w-full sm:max-w-xs md:max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4">
             <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
@@ -63,7 +63,7 @@ export default function AllDrivers() {
 
       <div className="bg-white rounded-2xl border border-indigo-100/30 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[600px]">
+          <table className="w-full text-sm min-w-[650px]">
             <thead>
               <tr className="bg-indigo-50/50 text-gray-500 text-xs uppercase tracking-wider">
                 <th className="px-5 py-3.5 text-left font-semibold whitespace-nowrap">Driver</th>

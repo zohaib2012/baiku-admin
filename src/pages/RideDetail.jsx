@@ -35,8 +35,8 @@ export default function RideDetail() {
   const formatTime = ts => ts?.toDate ? format(ts.toDate(), 'MMM d yyyy, HH:mm') : '—';
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      <button onClick={() => navigate(-1)} className="text-gray-400 hover:text-indigo-600 flex items-center gap-1.5 text-sm transition-colors group">
+    <div className="max-w-4xl mx-auto space-y-6">
+      <button onClick={() => navigate(-1)} className="text-gray-400 hover:text-indigo-600 flex items-center gap-1.5 text-sm transition-colors group py-2 min-h-[44px]">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform">
           <line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" />
         </svg>

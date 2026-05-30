@@ -25,9 +25,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-4">
-      <div className="slide-up w-full max-w-sm">
-        <div className="bg-white rounded-3xl shadow-xl shadow-indigo-200/20 border border-indigo-100/30 p-8 sm:p-10 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-4 overflow-auto">
+      <div className="slide-up w-full max-w-sm py-8">
+        <div className="bg-white rounded-3xl shadow-xl shadow-indigo-200/20 border border-indigo-100/30 p-6 sm:p-10 relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 via-violet-500 to-indigo-600" />
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-indigo-200/10 to-violet-200/10 rounded-full blur-3xl" />
 

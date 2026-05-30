@@ -21,7 +21,7 @@ export default function Layout() {
       <Sidebar />
       <main className="flex-1 flex flex-col min-w-0">
         <header className="bg-white/80 backdrop-blur-md border-b border-indigo-100/30 px-4 sm:px-6 py-3 shrink-0 sticky top-0 z-30">
-          <div className="flex items-center gap-2 text-sm ml-12 lg:ml-0">
+          <div className="flex items-center gap-2 text-sm ml-14 lg:ml-0 min-w-0">
             <Link to="/" className="text-indigo-400 hover:text-indigo-600 transition-colors shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />

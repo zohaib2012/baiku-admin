@@ -57,10 +57,10 @@ export default function PendingDrivers() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 flex flex-wrap items-center gap-2">
           Pending Approval
           {drivers.length > 0 && (
-            <span className="ml-3 bg-amber-50 text-amber-700 text-sm font-medium px-2.5 py-0.5 rounded-full align-middle ring-1 ring-amber-200/50">
+            <span className="bg-amber-50 text-amber-700 text-sm font-medium px-2.5 py-0.5 rounded-full ring-1 ring-amber-200/50 shrink-0">
               {drivers.length} pending
             </span>
           )}
@@ -156,9 +156,9 @@ export default function PendingDrivers() {
                   ))}
                 </div>
 
-                <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-500">
-                  <span>CNIC: <strong className="text-gray-700 font-mono">{driver.cnicNumber}</strong></span>
-                  <span>License: <strong className="text-gray-700 font-mono">{driver.licenseNumber}</strong></span>
+                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-500 leading-relaxed">
+                  <span className="truncate max-w-[180px]">CNIC: <strong className="text-gray-700 font-mono">{driver.cnicNumber}</strong></span>
+                  <span className="truncate max-w-[180px]">License: <strong className="text-gray-700 font-mono">{driver.licenseNumber}</strong></span>
                   {driver.createdAt?.toDate && (
                     <span>Applied: <strong className="text-gray-700">{formatDate(driver.createdAt.toDate())}</strong></span>
                   )}

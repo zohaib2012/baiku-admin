@@ -36,7 +36,7 @@ export default function Users() {
         <p className="text-sm text-gray-400 mt-1">{users.length} passengers registered</p>
       </div>
 
-      <div className="relative w-full sm:max-w-xs">
+      <div className="relative w-full sm:max-w-xs md:max-w-sm">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4">
           <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
@@ -47,7 +47,7 @@ export default function Users() {
 
       <div className="bg-white rounded-2xl border border-indigo-100/30 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[500px]">
+          <table className="w-full text-sm min-w-[550px]">
             <thead>
               <tr className="bg-indigo-50/50 text-gray-500 text-xs uppercase tracking-wider">
                 <th className="px-5 py-3.5 text-left font-semibold whitespace-nowrap">Name</th>
@@ -88,7 +88,7 @@ export default function Users() {
                           <span className="font-medium text-gray-900 truncate">{user.name || '—'}</span>
                         </div>
                       </td>
-                      <td className="px-5 py-3.5 text-gray-500 text-xs max-w-[150px] truncate">{user.email || <span className="text-gray-300 italic">—</span>}</td>
+                      <td className="px-5 py-3.5 text-gray-500 text-xs max-w-[120px] sm:max-w-[200px] truncate">{user.email || <span className="text-gray-300 italic">—</span>}</td>
                       <td className="px-5 py-3.5 text-gray-500 font-mono text-xs whitespace-nowrap">{user.phone || '—'}</td>
                       <td className="px-5 py-3.5 whitespace-nowrap">
                         <span className="flex items-center gap-1">

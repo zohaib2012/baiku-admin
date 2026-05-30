@@ -42,10 +42,10 @@ export default function Rides() {
         <p className="text-sm text-gray-400 mt-1">Manage and monitor all ride requests</p>
       </div>
 
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
         {STATUSES.map(s => (
           <button key={s} onClick={() => setFilter(s)}
-            className={`px-3.5 py-2 rounded-xl text-xs font-medium capitalize transition-all duration-200
+            className={`px-3.5 py-2 rounded-xl text-xs font-medium capitalize transition-all duration-200 whitespace-nowrap shrink-0
               ${filter === s ? 'bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-sm' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300'}`}>
             {s.replace(/_/g, ' ')}
             {filter === s && rides.length > 0 && <span className="ml-1.5 bg-white/20 px-1.5 py-0.5 rounded text-[10px]">{rides.length}</span>}
@@ -55,7 +55,7 @@ export default function Rides() {
 
       <div className="bg-white rounded-2xl border border-indigo-100/30 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[700px]">
+          <table className="w-full text-sm min-w-[750px]">
             <thead>
               <tr className="bg-indigo-50/50 text-gray-500 text-xs uppercase tracking-wider">
                 <th className="px-5 py-3.5 text-left font-semibold whitespace-nowrap">Passenger</th>
@@ -82,7 +82,7 @@ export default function Rides() {
                   <tr key={ride.id} className="hover:bg-indigo-50/30 cursor-pointer transition-colors" onClick={() => navigate(`/rides/${ride.id}`)}>
                     <td className="px-5 py-3.5 font-medium text-gray-800 whitespace-nowrap">{ride.passengerName || '—'}</td>
                     <td className="px-5 py-3.5 text-gray-500 whitespace-nowrap">{ride.driverName || <span className="text-gray-300 italic">Not assigned</span>}</td>
-                    <td className="px-5 py-3.5 text-xs text-gray-400 max-w-[160px]">
+                    <td className="px-5 py-3.5 text-xs text-gray-400 max-w-[120px] sm:max-w-[160px]">
                       <div className="flex items-center gap-1.5 truncate">
                         <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full shrink-0" />
                         <span className="truncate">{ride.pickupAddress}</span>
