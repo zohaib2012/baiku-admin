@@ -11,10 +11,6 @@ const links = [
   { to: '/users', label: 'Users', icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg> },
 ];
 
-const bottomLinks = [
-  { to: '/settings', label: 'Settings', icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg> },
-];
-
 export default function Sidebar() {
   const [loggingOut, setLoggingOut] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
@@ -84,28 +80,6 @@ export default function Sidebar() {
             </NavLink>
           );
         })}
-        {!collapsed && (
-          <div className="pt-4 mt-4 border-t border-indigo-900/30">
-            <div className="text-[9px] text-indigo-300/40 font-semibold uppercase tracking-[0.15em] px-3 mb-3 flex items-center gap-2">
-              <span className="w-4 h-px bg-indigo-400/20" />
-              Preferences
-            </div>
-            {bottomLinks.map(({ to, label, icon }) => (
-              <NavLink key={to} to={to}
-                className={({ isActive: active }) =>
-                  `relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 group
-                  ${active ? 'text-white' : 'text-indigo-200/60 hover:text-white hover:bg-white/[0.06]'}`}>
-                {({ isActive: active }) => (
-                  <>
-                    {active && <span className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-indigo-500/10 to-transparent rounded-xl" />}
-                    <span className={`relative z-10 transition-all duration-200 ${active ? 'text-indigo-300' : 'text-indigo-400/60 group-hover:text-indigo-300'}`}>{icon}</span>
-                    <span className="relative z-10 truncate">{label}</span>
-                  </>
-                )}
-              </NavLink>
-            ))}
-          </div>
-        )}
       </nav>
 
       <div className="relative px-2.5 py-3 border-t border-indigo-900/30 bg-gradient-to-t from-indigo-950/30 to-transparent">
