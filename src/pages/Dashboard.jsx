@@ -26,15 +26,7 @@ export default function Dashboard() {
         const todayStart = new Date();
         todayStart.setHours(0, 0, 0, 0);
 
-        const [
-          usersSnap,
-          driversSnap,
-          pendingSnap,
-          onlineSnap,
-          completedSnap,
-          activeSnap,
-          todaySnap,
-        ] = await Promise.all([
+        const [usersSnap, driversSnap, pendingSnap, onlineSnap, completedSnap, activeSnap, todaySnap] = await Promise.all([
           getCountFromServer(collection(db, 'users')),
           getCountFromServer(collection(db, 'drivers')),
           getCountFromServer(query(collection(db, 'drivers'), where('status', '==', 'pending'))),
@@ -54,9 +46,7 @@ export default function Dashboard() {
           activeRides: activeSnap.data().count,
         });
 
-        const recentSnap = await getDocs(
-          query(collection(db, 'rides'), orderBy('createdAt', 'desc'), limit(5))
-        );
+        const recentSnap = await getDocs(query(collection(db, 'rides'), orderBy('createdAt', 'desc'), limit(5)));
         setRecentRides(recentSnap.docs.map(d => ({ id: d.id, ...d.data() })));
       } catch (err) {
         console.error('Dashboard load error:', err);
@@ -69,18 +59,18 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-sm text-gray-400 mt-1">Overview of your Baiku platform</p>
         </div>
-        <div className="flex items-center gap-2 text-xs text-gray-400 bg-white px-3 py-1.5 rounded-lg border border-indigo-100/30">
+        <div className="flex items-center gap-2 text-xs text-gray-400 bg-white px-3 py-1.5 rounded-lg border border-indigo-100/30 self-start sm:self-auto">
           <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
           Live
         </div>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {loading ? (
           <>
             {[1,2,3,4,5,6,7].map(i => (
@@ -92,19 +82,19 @@ export default function Dashboard() {
           </>
         ) : (
           <>
-            <StatCard title="Total Users"       value={stats.totalUsers}     icon="👥" color="violet" sub="Registered accounts" />
+            <StatCard title="Total Users"       value={stats.totalUsers}     icon="👥" color="violet"  sub="Registered accounts" />
             <StatCard title="Total Drivers"     value={stats.totalDrivers}   icon="🏍️" color="emerald" sub="Registered drivers" />
-            <StatCard title="Pending Approval"  value={stats.pendingDrivers} icon="⏳" color="amber" sub="Awaiting review" />
+            <StatCard title="Pending Approval"  value={stats.pendingDrivers} icon="⏳" color="amber"   sub="Awaiting review" />
             <StatCard title="Online Drivers"    value={stats.onlineDrivers}  icon="🟢" color="emerald" sub="Currently active" />
-            <StatCard title="Today's Rides"     value={stats.todayRides}     icon="📍" color="indigo" sub="Since midnight" />
-            <StatCard title="Active Rides"      value={stats.activeRides}    icon="🚗" color="amber" sub="In progress" />
+            <StatCard title="Today's Rides"     value={stats.todayRides}     icon="📍" color="indigo"  sub="Since midnight" />
+            <StatCard title="Active Rides"      value={stats.activeRides}    icon="🚗" color="amber"   sub="In progress" />
             <StatCard title="Completed Rides"   value={stats.completedRides} icon="✅" color="emerald" sub="All time" />
           </>
         )}
       </div>
 
       <div className="bg-white rounded-2xl border border-indigo-100/30 shadow-sm overflow-hidden">
-        <div className="px-6 py-4 border-b border-indigo-100/30 flex items-center justify-between">
+        <div className="px-4 sm:px-6 py-4 border-b border-indigo-100/30 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <h2 className="font-semibold text-gray-800">Recent Rides</h2>
             <span className="bg-indigo-50 text-indigo-600 text-[10px] font-medium px-2 py-0.5 rounded-full">Live</span>
@@ -115,12 +105,12 @@ export default function Dashboard() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-indigo-50/50 text-gray-500 text-xs uppercase tracking-wider">
-                <th className="px-6 py-3.5 text-left font-semibold">Passenger</th>
-                <th className="px-6 py-3.5 text-left font-semibold">Pickup</th>
-                <th className="px-6 py-3.5 text-left font-semibold">Drop</th>
-                <th className="px-6 py-3.5 text-left font-semibold">Price</th>
-                <th className="px-6 py-3.5 text-left font-semibold">Status</th>
-                <th className="px-6 py-3.5 text-left font-semibold">Time</th>
+                <th className="px-4 sm:px-6 py-3.5 text-left font-semibold whitespace-nowrap">Passenger</th>
+                <th className="px-4 sm:px-6 py-3.5 text-left font-semibold whitespace-nowrap">Pickup</th>
+                <th className="px-4 sm:px-6 py-3.5 text-left font-semibold whitespace-nowrap">Drop</th>
+                <th className="px-4 sm:px-6 py-3.5 text-left font-semibold whitespace-nowrap">Price</th>
+                <th className="px-4 sm:px-6 py-3.5 text-left font-semibold whitespace-nowrap">Status</th>
+                <th className="px-4 sm:px-6 py-3.5 text-left font-semibold whitespace-nowrap">Time</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-indigo-50/50">
@@ -136,14 +126,14 @@ export default function Dashboard() {
               ) : (
                 recentRides.map((ride, i) => (
                   <tr key={ride.id} className="hover:bg-indigo-50/30 transition-colors slide-in-right" style={{ animationDelay: `${i * 50}ms` }}>
-                    <td className="px-6 py-3.5 font-medium text-gray-800">{ride.passengerName || '—'}</td>
-                    <td className="px-6 py-3.5 text-gray-500 max-w-[160px] truncate">{ride.pickupAddress}</td>
-                    <td className="px-6 py-3.5 text-gray-500 max-w-[160px] truncate">{ride.dropAddress}</td>
-                    <td className="px-6 py-3.5 font-medium">
+                    <td className="px-4 sm:px-6 py-3.5 font-medium text-gray-800 whitespace-nowrap">{ride.passengerName || '—'}</td>
+                    <td className="px-4 sm:px-6 py-3.5 text-gray-500 max-w-[120px] sm:max-w-[160px] truncate">{ride.pickupAddress}</td>
+                    <td className="px-4 sm:px-6 py-3.5 text-gray-500 max-w-[120px] sm:max-w-[160px] truncate">{ride.dropAddress}</td>
+                    <td className="px-4 sm:px-6 py-3.5 font-medium whitespace-nowrap">
                       <span className="bg-indigo-50 px-2.5 py-1 rounded-lg text-sm text-indigo-700 font-semibold">Rs. {ride.finalPrice || ride.passengerPrice}</span>
                     </td>
-                    <td className="px-6 py-3.5"><Badge status={ride.status} /></td>
-                    <td className="px-6 py-3.5 text-gray-400 text-xs">
+                    <td className="px-4 sm:px-6 py-3.5 whitespace-nowrap"><Badge status={ride.status} /></td>
+                    <td className="px-4 sm:px-6 py-3.5 text-gray-400 text-xs whitespace-nowrap">
                       {ride.createdAt?.toDate ? format(ride.createdAt.toDate(), 'MMM d, HH:mm') : '—'}
                     </td>
                   </tr>
